@@ -1,6 +1,8 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
+import * as basicLightbox from './02-lightbox/basiclightbox';
+
 const gallery = document.querySelector('.gallery');
 
 for (const img of galleryItems) {
@@ -20,3 +22,14 @@ for (const img of galleryItems) {
     divGallery.append(linkImg);
     gallery.append(divGallery);
 }
+
+const instance = basicLightbox.create(`
+    <div class="modal">
+        <p>
+            Your first lightbox with just a few lines of code.
+            Yes, it's really that simple.
+        </p>
+    </div>
+`);
+
+// document.querySelector('body').append(instance);
