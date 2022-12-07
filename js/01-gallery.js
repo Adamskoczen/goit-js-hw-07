@@ -1,8 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-import * as basicLightbox from './02-lightbox/basiclightbox';
-
 const gallery = document.querySelector('.gallery');
 
 for (const img of galleryItems) {
@@ -32,4 +30,4 @@ const instance = basicLightbox.create(`
     </div>
 `);
 
-// document.querySelector('body').append(instance);
+document.body.appendChild(instance);
