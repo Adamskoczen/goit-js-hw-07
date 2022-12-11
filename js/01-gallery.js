@@ -21,13 +21,23 @@ for (const img of galleryItems) {
     gallery.append(divGallery);
 }
 
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`);
+gallery.addEventListener("click", onImageClick);
 
-document.body.appendChild(instance);
+function onImageClick(e) {
+    e.preventDefault();
+    
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
+
+    const instance = basicLightbox.create(`
+        <img src="${e.target.dataset.source}" width="800" height="600">
+    `);
+    instance.show();
+
+    gallery.addEventListener("keydown", (e) => {
+        if (e.code === "Escape") {
+            instance.close();
+        }
+    });
+}
