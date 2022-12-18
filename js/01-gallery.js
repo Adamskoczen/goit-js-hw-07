@@ -32,14 +32,21 @@ function onImageClick(e) {
 
     const instance = basicLightbox.create(`
         <img src="${e.target.dataset.source}" width="800" height="600">
-    `);
+    `, {
+        onClose: () => {
+        gallery.removeEventListener("keydown", addEscButton);
+        }
+    });
+
     instance.show();
 
-    if (instance.visible()) {
-        gallery.addEventListener("keydown", (e) => {
-            if (e.code === "Escape") {
-                instance.close();
-            }
-        })
+    const addEscButton = (e) => {
+        if (e.code === "Escape") {
+            instance.close();
+        }
     };
+
+    gallery.addEventListener("keydown", addEscButton);
+
+
 }
